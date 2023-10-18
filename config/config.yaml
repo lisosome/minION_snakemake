@@ -1,7 +1,7 @@
 ---
 ### Config for Orfeo Usage
 paths:
-  rawdata: "/orfeo/cephfs/home/burlo/nardone/pipelines/minION_workflow/test_data"
+  rawdata: "/fast/burlo/nardone/test_data_minion"
   baseout: "/orfeo/cephfs/scratch/burlo/nardone/test_run_minion_pipeline"
   minimap: "/orfeo/cephfs/home/burlo/nardone/pipelines/minION_workflow/software/minimap2"
   mosdepth: "/orfeo/cephfs/home/burlo/nardone/pipelines/minION_workflow/software/mosdepth"
@@ -13,17 +13,3 @@ guppy:
   config: "/orfeo/opt/programs/x86/fedora36/ont-guppy-cpu/6.5.7/data/dna_r10.4.1_e8.2_400bps_5khz_sup.cfg"
 
 reference_genome: "/fast/burlo/fcrudele/resources/hgRef/GRCh38.p13/no_alt/GCA_000001405.15_GRCh38_no_alt_analysis_set.fna"
-
-#### SLURM configuration
-#latency-wait: 60
-#reason: True
-#show-failed-logs: True
-#keep-going: True
-#printshellcmds: True
-#rerun-incomplete: True
-#restart-times: 3
-#jobname: "{rule}.{jobid}"
-#max-jobs-per-second: 1
-#max-status-checks-per-second: 10
-#jobs: 10
-#cluster: "sbatch --output=\"jobs/{rule}/slurm_%x_%j.out\" --error=\"jobs/{rule}/slurm_%x_%j.log\""
