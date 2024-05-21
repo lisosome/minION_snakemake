@@ -70,7 +70,7 @@ rule guppy_basecall:
         "ont-guppy-gpu/6.5.7"
     resources:
         partition="GPU",
-        runtime=5760,
+        runtime=1080,
         mem_mb=192000,
         cpus_per_task=48
     benchmark:
