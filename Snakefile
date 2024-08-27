@@ -67,7 +67,8 @@ rule guppy_basecall:
         guppy_args = "--recursive --num_callers 12 --gpu_runners_per_device 4 --chunks_per_runner 512 --chunk_size 3000",
         config = {guppy_config}
     envmodules:
-        "ont-guppy-gpu/6.5.7"
+        "ont-guppy-gpu/6.5.7",
+        "cuda/11.7"
     resources:
         partition="GPU",
         runtime=1080,
@@ -81,7 +82,9 @@ rule guppy_basecall:
         config["paths"]["log_dir"] + "/guppy_basecalling.err"
     shell: 
         """
-            guppy_basecaller -i {input.fol} -s {output.fst} -c {params.config} -x 'auto' {params.guppy_args} 2> {log[1]} 1> {log[0]}
+        CUDA_VISIBLE_DEVICES=0
+        declare CUDA_VISIBLE_DEVICES   
+        guppy_basecaller -i {input.fol} -s {output.fst} -c {params.config} -x 'auto' {params.guppy_args} 2> {log[1]} 1> {log[0]}
         """
 
 rule preprocessing:
