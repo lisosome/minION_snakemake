@@ -83,7 +83,7 @@ rule guppy_basecall:
     shell: 
         """
         export CUDA_VISIBLE_DEVICES=0   
-        guppy_basecaller -i {input.fol} -s {output.fst} -c {params.config} -x 'auto' {params.guppy_args} 2> {log[1]} 1> {log[0]}
+        guppy_basecaller -i {input.fol} -s {output.fst} -c {params.config} -x cuda:0 {params.guppy_args} 2> {log[1]} 1> {log[0]}
         """
 
 rule preprocessing:
