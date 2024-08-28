@@ -82,8 +82,7 @@ rule guppy_basecall:
         config["paths"]["log_dir"] + "/guppy_basecalling.err"
     shell: 
         """
-        CUDA_VISIBLE_DEVICES=0
-        declare CUDA_VISIBLE_DEVICES   
+        export CUDA_VISIBLE_DEVICES=0   
         guppy_basecaller -i {input.fol} -s {output.fst} -c {params.config} -x 'auto' {params.guppy_args} 2> {log[1]} 1> {log[0]}
         """
 
