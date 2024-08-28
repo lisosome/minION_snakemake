@@ -71,6 +71,7 @@ rule guppy_basecall:
         "cuda/11.7"
     resources:
         partition="GPU",
+        gpus=1,
         runtime=1080,
         mem_mb=192000,
         cpus_per_task=48
@@ -83,7 +84,7 @@ rule guppy_basecall:
     shell: 
         """
         export CUDA_VISIBLE_DEVICES=0   
-        guppy_basecaller -i {input.fol} -s {output.fst} -c {params.config} -x cuda:0 {params.guppy_args} 2> {log[1]} 1> {log[0]}
+        guppy_basecaller -i {input.fol} -s {output.fst} -c {params.config} -x auto {params.guppy_args} 2> {log[1]} 1> {log[0]}
         """
 
 rule preprocessing:
